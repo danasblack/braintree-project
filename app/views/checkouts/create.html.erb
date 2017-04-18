@@ -1,0 +1,16 @@
+
+<html>
+  <head>
+<h1>Transaction Status</h1>
+  </head>
+
+ <body>
+<% if @result.success? %>
+<p>Payment Successful</p>
+<% else %>
+  <p>Payment Declined</p>
+<% end %>
+
+<a href="/checkouts"> Back to checkout page</a>
+ </body>
+</html>

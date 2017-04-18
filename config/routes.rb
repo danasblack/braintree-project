@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-   root 'checkouts#new'
+root 'checkouts#new'
 
 
 get '/checkouts' => 'checkouts#new'
 post '/checkouts' => 'checkouts#create'
+get '/checkouts/:id' => 'checkouts#show'
 
 end
 

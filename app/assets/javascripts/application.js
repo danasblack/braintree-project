@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require angular
 //=require app
+//= require braintree 
 //= require_tree .
