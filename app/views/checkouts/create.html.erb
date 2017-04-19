@@ -5,11 +5,8 @@
   </head>
 
  <body>
-<% if @result.success? %>
-<p>Payment Successful</p>
-<% else %>
-  <p>Payment Declined</p>
-<% end %>
+
+<%= @result[:customer_id] %>
 
 <a href="/checkouts"> Back to checkout page</a>
  </body>

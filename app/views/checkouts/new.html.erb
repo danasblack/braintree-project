@@ -21,6 +21,8 @@
 <script id="braintree-client-token" type="application/json"><%= @client_token %></script>
 
 <script>
+
+var form = document.querySelector('#checkout-form');
 var clientToken = document.getElementById('braintree-client-token').innerHTML;
 
 braintree.setup(clientToken, 'custom', {
@@ -48,7 +50,10 @@ braintree.setup(clientToken, 'custom', {
       expirationDate: {
         selector: '#expiration-date',
         placeholder: '10/2019'
-      }
-   }
+      },
+   },onPaymentMethodReceived:function(nonce){
+        console.log(JSON.stringify(nonce));
+        return false;
+  }
 });
 </script>
