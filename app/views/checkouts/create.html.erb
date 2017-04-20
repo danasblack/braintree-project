@@ -4,10 +4,23 @@
 <h1>Transaction Status</h1>
   </head>
 
- <body>
+ <body>	
 
-<%= @result[:customer_id] %>
+
+<% if @customer.success? %>		
+ <p>Customer Number: <%= @customer.customer.id %></p>	 
+ <% else %>		
+ <p><%= @customer.errors %></p>		
+ <% end %>
+
+<% if @result.success? %>
+<p>Payment Successful</p>
+<% else %>
+  <p>Payment Declined</p>
+<% end %>
+
 
 <a href="/checkouts"> Back to checkout page</a>
  </body>
 </html>
+

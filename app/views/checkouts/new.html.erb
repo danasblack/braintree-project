@@ -51,9 +51,15 @@ braintree.setup(clientToken, 'custom', {
         selector: '#expiration-date',
         placeholder: '10/2019'
       },
-   },onPaymentMethodReceived:function(nonce){
+   },function () {
+        $.ajax({
+        type : "post",
+        onPaymentMethodReceived:function(nonce){
         console.log(JSON.stringify(nonce));
-        return false;
-  }
-});
+        // return false;
+        form.submit();
+       }
+      })
+     }
+   });
 </script>

@@ -9,13 +9,30 @@ class CheckoutsController < ApplicationController
 	end
 
 	def create
-    amount = params["amount"] 
-    nonce_from_the_client = params[:payment_method_nonce]
+		amount = params["amount"] 
+		nonce_from_the_client = params[:payment_method_nonce]
 
-    @result =  Braintree::PaymentMethod.create(
-         :customer_id => "131866",
-         :payment_method_nonce => nonce_from_the_client
-  )
-  end
-end
+		@customer = Braintree::Customer.create(
+			:first_name => "Charity",
+			:last_name => "Smith",
+			:payment_method_nonce => nonce_from_the_client
+			)
+
+		@payment_method = Braintree::PaymentMethod.create(
+			:customer_id => @customer.customer.id,
+			:payment_method_nonce => nonce_from_the_client,
+			:options => {
+				:verify_card => true
+			}
+		)
+
+		@result = Braintree::Transaction.sale(
+			:amount => "2000.00",
+			:payment_method_token => @customer.customer.payment_methods[0].token,
+			:options => {
+				:submit_for_settlement => true
+			}
+			)
+	end
+end 
 
