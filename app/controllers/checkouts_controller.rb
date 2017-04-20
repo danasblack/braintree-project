@@ -27,7 +27,7 @@ class CheckoutsController < ApplicationController
 			)
 
 		@result = Braintree::Transaction.sale(
-			:amount => "2000.00",
+			:amount => "10.00",
 			:payment_method_token => @customer.customer.payment_methods[0].token,
 			:options => {
 				:submit_for_settlement => true
