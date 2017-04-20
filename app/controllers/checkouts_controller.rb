@@ -24,7 +24,7 @@ class CheckoutsController < ApplicationController
 			:options => {
 				:verify_card => true
 			}
-		)
+			)
 
 		@result = Braintree::Transaction.sale(
 			:amount => "2000.00",

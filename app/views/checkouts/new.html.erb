@@ -1,19 +1,19 @@
 <h1>Make a new transaction</h1>
 
 <%= form_tag({controller: 'checkouts', action: 'create'}, method: 'post', id: 'checkout-form') do %>
-  <div id="error-message"></div>
+<div id="error-message"></div>
 
-  <label for="card-number">Card Number</label>
-  <div class="hosted-field" id="card-number"></div>
+<label for="card-number">Card Number</label>
+<div class="hosted-field" id="card-number"></div>
 
-  <label for="cvv">CVV</label>
-  <div class="hosted-field" id="cvv"></div>
+<label for="cvv">CVV</label>
+<div class="hosted-field" id="cvv"></div>
 
-  <label for="expiration-date">Expiration Date</label>
-  <div class="hosted-field" id="expiration-date"></div>
+<label for="expiration-date">Expiration Date</label>
+<div class="hosted-field" id="expiration-date"></div>
 
-  <input type="hidden" name="payment_method_nonce">
-  <input type="submit" value="Pay $20">
+<input type="hidden" name="payment_method_nonce">
+<input type="submit" value="Pay $20">
 <% end %>
 
 <script src="https://js.braintreegateway.com/js/beta/braintree-hosted-fields-beta.16.min.js"></script>
@@ -28,38 +28,38 @@ var clientToken = document.getElementById('braintree-client-token').innerHTML;
 braintree.setup(clientToken, 'custom', {
   id: 'checkout-form',
   hostedFields: {
-       styles: {
-      'input': {
-        'font-size': '14pt'
-      },
-      'input.invalid': {
-        'color': 'red'
-      },
-      'input.valid': {
-        'color': 'green'
-      }
+   styles: {
+    'input': {
+      'font-size': '14pt'
     },
-      number: {
-        selector: '#card-number',
-        placeholder: '4111 1111 1111 1111'
-      },
-      cvv: {
-        selector: '#cvv',
-        placeholder: '123'
-      },
-      expirationDate: {
-        selector: '#expiration-date',
-        placeholder: '10/2019'
-      },
-   },function () {
-        $.ajax({
-        type : "post",
-        onPaymentMethodReceived:function(nonce){
-        console.log(JSON.stringify(nonce));
+    'input.invalid': {
+      'color': 'red'
+    },
+    'input.valid': {
+      'color': 'green'
+    }
+  },
+  number: {
+    selector: '#card-number',
+    placeholder: '4111 1111 1111 1111'
+  },
+  cvv: {
+    selector: '#cvv',
+    placeholder: '123'
+  },
+  expirationDate: {
+    selector: '#expiration-date',
+    placeholder: '10/2019'
+  },
+},function () {
+  $.ajax({
+    type : "post",
+    onPaymentMethodReceived:function(nonce){
+      console.log(JSON.stringify(nonce));
         // return false;
         form.submit();
-       }
-      })
-     }
-   });
+      }
+    })
+}
+});
 </script>

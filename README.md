@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application was developed using the Ruby as the server-side language
 
-Things you may want to cover:
+Please note the following:
 
-* Ruby version
+Braintree gem is included in the gemfile
 
-* System dependencies
+config/initializers/braintree.rb where Braintree is initialized with environment variables
 
-* Configuration
+app/controllers/checkouts_controller.rb, a controller that prepares stores the card and creates the transaction
 
-* Database creation
+app/views/checkouts/new.html.erb, a view where Hosted Fields is initialized
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
